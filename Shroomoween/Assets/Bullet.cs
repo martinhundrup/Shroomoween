@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody2D))]
@@ -10,12 +11,25 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+        GameStats.OnGameRestart += OnRestart;
+
         rb = GetComponent<Rigidbody2D>();
+        transform.position = GameObject.FindGameObjectWithTag("BulletSpawner").transform.position;
+        Debug.Log(transform.position);
 
-        rb.linearVelocity = new Vector3(speed, Random.Range(-angleRange, angleRange), 0f);
-        rb.linearVelocity = rb.linearVelocity.normalized * speed;
+        // get mouse pos
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+
+        Vector3 direction = mousePosition - transform.position;
+        direction.Normalize();
+
+        // Generate a random angle offset within the specified spread angle
+        float randomAngle = Random.Range(-angleRange, angleRange);
+        Vector3 spreadDirection = Quaternion.Euler(0, 0, randomAngle) * direction;
+
+        rb.linearVelocity = spreadDirection.normalized * speed;
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,5 +37,16 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnRestart()
+    {
+        GameStats.OnGameRestart -= OnRestart;
+        Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameStats.OnGameRestart -= OnRestart;
     }
 }

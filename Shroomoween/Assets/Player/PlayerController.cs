@@ -1,3 +1,6 @@
+using System.Drawing;
+using System.IO.Pipes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody2D))]
@@ -14,33 +17,44 @@ public class PlayerController : MonoBehaviour
 
     private int animationState = 0; // 0 is idle, 1 is running, 2 is jumping
 
+    private Vector2 startingPos;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D> ();
+        GameStats.OnGameRestart += OnRestart;
+        startingPos = transform.position;
     }
 
     private void Update()
     {
+        if (GameStats.GameOver || !GameStats.GameStart)
+            return; // don't accept input if game is over or hasn't started
+
         // TODO: refactor to allow jump button to be held
         if (Input.GetButtonDown("Jump") && rb.linearVelocityY == 0) // only jump if grounded
         {
             rb.AddForceY(jumpForce * 100);
         }
 
+#if UNITY_EDITOR
+        Debug.DrawLine(GameObject.FindGameObjectWithTag("BulletSpawner").transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), UnityEngine.Color.red);
+#endif
         // shooting
         if (Input.GetButtonDown("Fire") && GameStats.Ammo > 0)
         {
             for (int i = 0; i < bulletCount; i++)
             {
                 var obj = Instantiate(bullet);
-                obj.transform.position = transform.position + new Vector3(0f, -0.5f, 0f);
             }
 
             GameStats.Ammo--;
         }
 
         // update animation
-        if (rb.linearVelocityY == 0)
+        if (GameStats.GameSpeed == 0)
+            SetIdle();
+        else if (rb.linearVelocityY == 0)
             SetRunning();
         else if (rb.linearVelocityY != 0)
             SetJumping();
@@ -51,14 +65,8 @@ public class PlayerController : MonoBehaviour
         if ( collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
         {
             parentAnimator.Play("Death");
+            GameStats.GameOver = true;
             GameStats.GameSpeed = 0;
-        }
-
-        if (collision.gameObject.CompareTag("Acorn"))
-        {
-            Destroy(collision.gameObject);
-            GameStats.Ammo++;
-
         }
     }
 
@@ -98,5 +106,11 @@ public class PlayerController : MonoBehaviour
     {
         animationState = 0;
         spriteAnimator.Play("idle");
+    }
+
+    private void OnRestart()
+    {
+        transform.position = startingPos;
+        parentAnimator.Play("Normal");
     }
 }

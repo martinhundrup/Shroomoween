@@ -9,6 +9,7 @@ public class Enemy : Obstacle
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        GameStats.OnGameRestart += base.OnRestart;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,4 +28,6 @@ public class Enemy : Obstacle
         yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
     }
+    
+
 }

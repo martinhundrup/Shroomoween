@@ -11,6 +11,11 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
+
+        // don't update if game isn't running
+        if (GameStats.GameSpeed <= 0)
+            return;
+
         // obstacle spawning
         if (obstacleTimer > 0)
         {

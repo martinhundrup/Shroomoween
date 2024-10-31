@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 996649640717983808}
   - component: {fileID: 7310714770513875262}
   - component: {fileID: 2024089155881194511}
-  - component: {fileID: 1968110246244009209}
+  - component: {fileID: 1520925304853400730}
   m_Layer: 0
-  m_Name: Acorn
-  m_TagString: Acorn
+  m_Name: Big_Acorn
+  m_TagString: BigAcorn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4884672382675036030, guid: c6cbd61f4858bdf448db0860fbae0518, type: 3}
+  m_Sprite: {fileID: -5425642554418310697, guid: eed9c84a91e665a48adbaa631e105e77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,9 +189,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.4375}
-  m_Radius: 0.3
---- !u!114 &1968110246244009209
+  m_Offset: {x: 0, y: 0.48}
+  m_Radius: 0.35
+--- !u!114 &1520925304853400730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,4 +203,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023434d49c587ef4297032399589094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 1
+  ammo: 3

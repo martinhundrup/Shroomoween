@@ -18,6 +18,7 @@ public class Obstacle : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        GameStats.OnGameRestart += OnRestart;
     }
 
     private void Update()
@@ -33,8 +34,18 @@ public class Obstacle : MonoBehaviour
         // delete itself if it goes off screen
         if (transform.position.x < -10)
         {
-            Debug.Log(transform.position.x);
             Destroy(this.gameObject);
         }
+    }
+
+    protected void OnRestart()
+    {
+        GameStats.OnGameRestart -= OnRestart;
+        Destroy(this.gameObject);
+    }
+
+    protected void OnDestroy()
+    {
+        GameStats.OnGameRestart -= OnRestart;
     }
 }
