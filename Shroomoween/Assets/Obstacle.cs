@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float speedModifier = 1f;
+    [SerializeField] protected float speedModifier = 1f;
     [SerializeField] private float yOffset = 0f;
 
     public float YOffset
@@ -13,7 +13,7 @@ public class Obstacle : MonoBehaviour
         get { return yOffset; }
     }
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     private void Awake()
     {
@@ -22,6 +22,11 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         rb.linearVelocityX = -GameStats.GameSpeed * speedModifier;
 
        
