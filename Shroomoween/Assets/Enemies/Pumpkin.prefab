@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: -7325348795878415378}
   m_Layer: 0
   m_Name: Pumpkin
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6034828014151354310}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -221,4 +221,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 1
-  gameStats: {fileID: 11400000, guid: dd427fb6bcb222e4fbbb6bfb4624e624, type: 2}
+  yOffset: 0

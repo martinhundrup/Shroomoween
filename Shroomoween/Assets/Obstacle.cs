@@ -6,7 +6,12 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private float speedModifier = 1f;
-    [SerializeField] private GameStats gameStats;
+    [SerializeField] private float yOffset = 0f;
+
+    public float YOffset
+    {
+        get { return yOffset; }
+    }
 
     private Rigidbody2D rb;
 
@@ -17,7 +22,7 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocityX = -gameStats.GameSpeed * speedModifier;
+        rb.linearVelocityX = -GameStats.GameSpeed * speedModifier;
 
        
         // delete itself if it goes off screen

@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class TilemapBlock : MonoBehaviour
 {
-    [SerializeField] private GameStats gameStats;
-
     private Rigidbody2D rb;
 
     private void Awake()
@@ -16,7 +14,7 @@ public class TilemapBlock : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocityX = -gameStats.GameSpeed;
+        rb.linearVelocityX = -GameStats.GameSpeed;
 
 
         // delete itself if it goes off screen

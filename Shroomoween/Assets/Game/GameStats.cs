@@ -1,20 +1,26 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObejcts/Game Stats")]
-public class GameStats : ScriptableObject
+public static class GameStats
 {
-    [SerializeField] private float gameSpeed;
-    [SerializeField] private int score;
+    [SerializeField] private static float gameSpeed;
+    [SerializeField] private static float score;
+    [SerializeField] private static int ammo;
 
-    public float GameSpeed
+    public static float GameSpeed
     {
         get { return gameSpeed; }
         set { gameSpeed = value; }
     }
 
-    public int Score
+    public static float Score
     {
         get { return score; }
         set { score = value; }
+    }
+
+    public static int Ammo
+    {
+        get { return ammo; }
+        set { ammo = value; }
     }
 }
