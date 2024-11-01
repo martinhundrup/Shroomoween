@@ -1,4 +1,5 @@
 # It's Shroom O' Ween!
+![image](https://github.com/user-attachments/assets/d5eee639-7ea7-49ba-baec-89f3e909c487)
 
 ## Play Online!
 https://hundrupm.itch.io/shroomwood-shroomies-spooky-run
