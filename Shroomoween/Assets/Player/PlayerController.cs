@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && rb.linearVelocityY == 0) // only jump if grounded
         {
             rb.AddForceY(jumpForce * 100);
+            SFXManager.instance.PlayJump();
         }
 
 #if UNITY_EDITOR
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         // shooting
         if (Input.GetButtonDown("Fire") && GameStats.Ammo > 0)
         {
+            SFXManager.instance.PlayFire();
             for (int i = 0; i < bulletCount; i++)
             {
                 var obj = Instantiate(bullet);
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if ( collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
         {
+            SFXManager.instance.PlayDeath();
             parentAnimator.Play("Death");
             GameStats.GameOver = true;
             GameStats.GameSpeed = 0;

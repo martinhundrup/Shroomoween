@@ -18,6 +18,7 @@ public class Enemy : Obstacle
     {
         if (collision.CompareTag("Bullet") && !isDead)
         {
+            SFXManager.instance.PlayKill();
             isDead = true;
             speedModifier = 0; // stop movement
             GetComponent<Collider2D>().enabled = false; // disable collider
