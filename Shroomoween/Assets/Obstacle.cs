@@ -32,7 +32,7 @@ public class Obstacle : MonoBehaviour
 
        
         // delete itself if it goes off screen
-        if (transform.position.x < -10)
+        if (transform.position.x < -15)
         {
             Destroy(this.gameObject);
         }

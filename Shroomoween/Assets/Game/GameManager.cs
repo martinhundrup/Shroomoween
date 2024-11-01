@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         GameStats.OnGameRestart += OnRestart;
+        restart.enabled = false;
         GameStats.GameSpeed = baseSpeed;
         GameStats.Score = 0;
         GameStats.Ammo = 3;
@@ -31,13 +32,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    Application.Quit();
+        //}
 
 
-        if (Input.GetKeyDown(KeyCode.R) && GameStats.GameStart)
+        if (Input.GetKeyDown(KeyCode.R) && GameStats.GameOver)
         {
             GameStats.RestartGame();
         }
