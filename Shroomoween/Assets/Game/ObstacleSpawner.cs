@@ -23,8 +23,12 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else
         {
+            // make it harder as the game speed gets higher
+
+
             obstacleTimer = baseTime + Random.Range(-randomVariation, randomVariation);
-            Obstacle obs = Instantiate(obstacles[Random.Range(0, obstacles.Count)].gameObject).GetComponent<Obstacle>();
+            obstacleTimer *= (100f - GameStats.GameSpeed) / 100f;
+            Obstacle obs = Instantiate(obstacles[Random.Range(0, obstacles.Count)].gameObject, transform).GetComponent<Obstacle>();
             obs.transform.position = transform.position + new Vector3(0f, obs.YOffset, 0f);
         }
     }

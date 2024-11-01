@@ -5,6 +5,8 @@ public class Enemy : Obstacle
 {
     // kill the enemy if collides with bullet
     private Animator animator;
+    [SerializeField] private GameObject indicator;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -14,11 +16,15 @@ public class Enemy : Obstacle
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ( collision.CompareTag("Bullet"))
+        if (collision.CompareTag("Bullet") && !isDead)
         {
+            isDead = true;
             speedModifier = 0; // stop movement
             GetComponent<Collider2D>().enabled = false; // disable collider
             animator.Play("Death");
+            GameStats.Score += 100;
+            var obj = Instantiate(indicator);
+            obj.transform.position = this.transform.position;
             StartCoroutine(OnDeath());
         }
     }

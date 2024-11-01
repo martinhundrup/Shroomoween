@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         GameStats.OnGameRestart += OnRestart;
         GameStats.GameSpeed = baseSpeed;
         GameStats.Score = 0;
+        GameStats.Ammo = 3;
     }
 
     private void Update()
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && !GameStats.GameStart)
         {
+            FindFirstObjectByType<CameraFollower>().FollowPlayer = false;
             GameStats.GameStart = true;
             title.enabled = false;
             info.enabled = false;
@@ -75,6 +77,6 @@ public class GameManager : MonoBehaviour
         restart.enabled = false;
         GameStats.GameSpeed = baseSpeed;
         GameStats.Score = 0;
-        GameStats.Ammo = 0;
+        GameStats.Ammo = 3;
     }
 }

@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 1
   yOffset: -0.125
+  indicator: {fileID: 4969118673662298454, guid: 04a7e4c9c4dafe04d8bdd20e441b9bb6, type: 3}
 --- !u!95 &4252656543109317500
 Animator:
   serializedVersion: 7

@@ -143,6 +143,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.33333334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 4
+      width: 48
+      height: 64
+    spriteID: a6ce5306e61f6d84a86a5938f0eff474
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 60, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -152,7 +173,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tilemap
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -161,6 +182,15 @@ ScriptedImporter:
         width: 48
         height: 64
       spriteId: a8bbfeb2763e9be47bf56ca11069569a
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 0
+        width: 48
+        height: 64
+      spriteId: a6ce5306e61f6d84a86a5938f0eff474
     linkedCells: []
     parentIndex: -1
   platformSettings:

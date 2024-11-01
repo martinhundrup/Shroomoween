@@ -6,6 +6,7 @@ using UnityEngine;
 public class TilemapBlock : MonoBehaviour
 {
     private Rigidbody2D rb;
+    [SerializeField] private float modifier;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class TilemapBlock : MonoBehaviour
 
     private void Update()
     {
-        rb.linearVelocityX = -GameStats.GameSpeed;
+        rb.linearVelocityX = -GameStats.GameSpeed * modifier;
 
 
         // delete itself if it goes off screen
