@@ -1,4 +1,4 @@
-# Shroomoween
+# It's Shroom O' Ween!
 
 ## Play Online!
 https://hundrupm.itch.io/shroomwood-shroomies-spooky-run
